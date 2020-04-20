@@ -10,6 +10,8 @@
     <modules>
         <module>coupon-eureka</module>
         <module>coupon-gateway</module>
+        <module>imooc-coupon-service</module>
+
     </modules>
     <packaging>pom</packaging>
 
@@ -47,15 +49,15 @@
         </dependencies>
     </dependencyManagement>
 
-    <repositories>
-        <repository>
-            <id>spring-milestones</id>
-            <name>Spring Milestones</name>
-            <url>https://repo.spring.io/milestone</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
+    <!--<repositories>-->
+    <!--    <repository>-->
+    <!--        <id>spring-milestones</id>-->
+    <!--        <name>Spring Milestones</name>-->
+    <!--        <url>https://repo.spring.io/milestone</url>-->
+    <!--        <snapshots>-->
+    <!--            <enabled>false</enabled>-->
+    <!--        </snapshots>-->
+    <!--    </repository>-->
+    <!--</repositories>-->
 
 </project>

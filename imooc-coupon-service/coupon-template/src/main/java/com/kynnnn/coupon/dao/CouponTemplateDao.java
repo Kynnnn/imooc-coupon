@@ -19,7 +19,7 @@ public interface CouponTemplateDao extends JpaRepository<CouponTemplate, Integer
      *
      * @return
      */
-    CouponTemplate findByName();
+    CouponTemplate findByName(String name);
 
     /**
      * 根据 available 和 expired 查询模板记录

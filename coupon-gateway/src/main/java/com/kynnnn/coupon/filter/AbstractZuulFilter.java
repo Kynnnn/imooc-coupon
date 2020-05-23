@@ -11,6 +11,7 @@ import com.netflix.zuul.exception.ZuulException;
  * @version 1.0
  * @date 2020/4/15 17:46
  */
+@SuppressWarnings("all")
 public abstract class AbstractZuulFilter extends ZuulFilter {
 
     //用于在过滤器之间传递消息，数据保存在每个请求的 ThreadLocal 中

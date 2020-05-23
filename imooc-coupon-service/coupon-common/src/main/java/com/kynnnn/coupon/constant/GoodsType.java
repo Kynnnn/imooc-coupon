@@ -11,6 +11,7 @@ import java.util.stream.Stream;
  */
 @Getter
 @AllArgsConstructor
+@SuppressWarnings("all")
 public enum GoodsType {
 
     WENYU("文娱", 1),

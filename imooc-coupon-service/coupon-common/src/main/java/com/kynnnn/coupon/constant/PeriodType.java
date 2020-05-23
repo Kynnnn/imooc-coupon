@@ -11,6 +11,7 @@ import java.util.stream.Stream;
  */
 @Getter
 @AllArgsConstructor
+@SuppressWarnings("all")
 public enum PeriodType {
 
     REGULAR("固定的(固定日期)", 1),

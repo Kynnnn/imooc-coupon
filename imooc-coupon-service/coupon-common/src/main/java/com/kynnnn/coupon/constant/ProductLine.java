@@ -8,9 +8,12 @@ import java.util.stream.Stream;
 
 /**
  * <h1>产品线枚举</h1>
+ *
+ * @author zhudiwei
  */
 @Getter
 @AllArgsConstructor
+@SuppressWarnings("all")
 public enum ProductLine {
 
     DAMAO("大猫", 1),

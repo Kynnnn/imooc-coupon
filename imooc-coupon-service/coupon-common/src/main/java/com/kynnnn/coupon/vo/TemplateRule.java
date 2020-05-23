@@ -18,23 +18,32 @@ import java.io.Serializable;
 @AllArgsConstructor
 public class TemplateRule implements Serializable {
 
-    //折扣券过期规则
+    /** 折扣券过期规则 */
     private Expiration expiration;
 
-    //折扣
+    /** 折扣 */
     private Discount discount;
 
-    //每人最多领几张
+    /** 每人最多领几张 */
     private Integer limitation;
 
-    // 使用范围：地域+商品类型
+    /** 使用范围：地域+商品类型 */
     private Usage usage;
 
-    //权重：可以和哪些优惠券叠加使用，同一类的优惠券一定不能叠加 list[]，优惠券唯一编码
+    /** 权重：可以和哪些优惠券叠加使用，同一类的优惠券一定不能叠加 list[]，优惠券唯一编码 */
     private String weight;
 
+    /** 校验功能 */
+    public  boolean validate(){
+        return expiration.validate() &&
+                discount.validate() &&
+                limitation>0 &&
+                usage.validate() &&
+                StringUtils.isNotEmpty(weight);
+    }
+
     /**
-     * 内部类，有限期限规则
+     * 内部类，有效期限规则
      */
     @Data
     @NoArgsConstructor
@@ -46,9 +55,10 @@ public class TemplateRule implements Serializable {
         //有效间隔，只对变动型的有效期有效
         private Integer gap;
 
-        //优惠券模板的失效类型
+        //优惠券模板的失效日期，对PeriodType的两类过期类型都有效
         private Long deadLine;
 
+        //最简化校验
         boolean validate() {
             return null != PeriodType.of(period) && gap > 0 && deadLine > 0;
         }
@@ -61,6 +71,7 @@ public class TemplateRule implements Serializable {
     @NoArgsConstructor
     @AllArgsConstructor
     public static class Discount {
+
         //额度，满减(20)，折扣(85)
         private Integer quota;
 
@@ -80,6 +91,7 @@ public class TemplateRule implements Serializable {
     @NoArgsConstructor
     @AllArgsConstructor
     public static class Usage {
+
         //省份
         private String province;
 

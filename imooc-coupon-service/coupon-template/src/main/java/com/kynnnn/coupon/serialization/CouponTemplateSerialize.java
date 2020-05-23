@@ -25,6 +25,7 @@ public class CouponTemplateSerialize extends JsonSerializer<CouponTemplate> {
             throws IOException {
         //开始序列化对象
         generator.writeStartObject();
+
         generator.writeStringField("id", template.getId().toString());
         generator.writeStringField("name", template.getName());
         generator.writeStringField("logo", template.getLogo());
@@ -39,6 +40,7 @@ public class CouponTemplateSerialize extends JsonSerializer<CouponTemplate> {
                 String.format("%04d", template.getId()));
         generator.writeStringField("target", template.getTarget().getDescription());
         generator.writeStringField("rule", JSON.toJSONString(template.getRule()));
+        
         //结束序列化对象
         generator.writeEndObject();
     }

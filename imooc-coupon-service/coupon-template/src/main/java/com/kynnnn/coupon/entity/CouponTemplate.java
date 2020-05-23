@@ -4,7 +4,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.kynnnn.coupon.constant.CouponCategory;
 import com.kynnnn.coupon.constant.DistributeTarget;
 import com.kynnnn.coupon.constant.ProductLine;
-import com.kynnnn.coupon.convert.CouponTemplateConverter;
+import com.kynnnn.coupon.convert.CouponCategoryConverter;
 import com.kynnnn.coupon.convert.DistributeTargetConverter;
 import com.kynnnn.coupon.convert.ProductLineConverter;
 import com.kynnnn.coupon.convert.RuleConverter;
@@ -75,7 +75,7 @@ public class CouponTemplate implements Serializable {
      * 优惠券分类
      */
     @Column(name = "category", nullable = false)
-    @Convert(converter = CouponTemplateConverter.class)
+    @Convert(converter = CouponCategoryConverter.class)
     private CouponCategory category;
 
     /**

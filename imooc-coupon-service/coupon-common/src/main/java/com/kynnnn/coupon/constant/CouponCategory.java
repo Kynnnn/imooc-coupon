@@ -13,8 +13,11 @@ import java.util.stream.Stream;
 @AllArgsConstructor
 public enum CouponCategory {
 
+    //满减券
     MANJIAN("满减券", "001"),
+    //折扣券
     ZHEKOU("折扣券", "002"),
+    //立减券
     LIJIAN("立减券", "003");
 
     /** 优惠券描述(分类) */

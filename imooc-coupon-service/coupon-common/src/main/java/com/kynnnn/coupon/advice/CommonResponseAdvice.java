@@ -4,6 +4,7 @@ import com.kynnnn.coupon.annotation.IgnoreResponseAdvice;
 import com.kynnnn.coupon.vo.CommonResponse;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.MediaType;
+import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.server.ServerHttpRequest;
 import org.springframework.http.server.ServerHttpResponse;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -20,14 +21,17 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 public class CommonResponseAdvice implements ResponseBodyAdvice<Object> {
 
     /**
-     * 判断是否要对响应进行处理
+     * 需要重写的方法1：判断是否需要对响应进行处理
      *
-     * @param methodParameter
+     * @param methodParameter 当前controller的方法
      * @param aClass
-     * @return
+     * @return true需要处理，false不需要处理
      */
     @Override
-    public boolean supports(MethodParameter methodParameter, Class aClass) {
+    @SuppressWarnings("all")
+    public boolean supports(MethodParameter methodParameter,
+                            Class<? extends HttpMessageConverter<?>> aClass) {
+
         //如果当前的 类 标识了 @IgnoreResponseAdvice 注解，不需要处理
         if (methodParameter.getDeclaringClass().isAnnotationPresent(IgnoreResponseAdvice.class)) {
             return false;
@@ -40,23 +44,36 @@ public class CommonResponseAdvice implements ResponseBodyAdvice<Object> {
         return true;
     }
 
+    /**
+     * 需要重写的方法2：
+     *
+     * @param o                  controller的返回对象
+     * @param methodParameter    controller的方法
+     * @param mediaType
+     * @param aClass
+     * @param serverHttpRequest
+     * @param serverHttpResponse
+     * @return
+     */
     @Override
+    @SuppressWarnings("all")
     public Object beforeBodyWrite(Object o,
                                   MethodParameter methodParameter,
-                                  MediaType mediaType, Class aClass,
+                                  MediaType mediaType,
+                                  Class<? extends HttpMessageConverter<?>> aClass,
                                   ServerHttpRequest serverHttpRequest,
                                   ServerHttpResponse serverHttpResponse) {
 
         //定义最终的返回对象
         CommonResponse<Object> response = new CommonResponse<>(0, "");
-        // 如果o是null，则不需要设置data
+        // 如果o是null，即返回类型是Null，则不需要设置data
         if (null == o) {
             return response;
-        //    如果 o 已经是 CommonResponse，则不需要处理
-        }else if (o instanceof CommonResponse){
-            response=(CommonResponse<Object>) o;
-        }else{
-            //否则，把 o 作为 CommonResponse 的 data，set进去
+            //如果o已经是CommonResponse，则不需要处理
+        } else if (o instanceof CommonResponse) {
+            response = (CommonResponse<Object>) o;
+        } else {
+            //否则，把相应对象作为CommonResponse的data部分set进去
             response.setData(o);
         }
         return response;

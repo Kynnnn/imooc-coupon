@@ -8,7 +8,9 @@ package com.kynnnn.coupon.exception;
  * @date 2020/4/16 10:54
  */
 public class CouponException extends Exception {
+
     public CouponException(String msg) {
         super(msg);
     }
+
 }

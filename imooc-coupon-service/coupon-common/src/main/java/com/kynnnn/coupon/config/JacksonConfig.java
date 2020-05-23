@@ -13,10 +13,13 @@ import java.text.SimpleDateFormat;
  */
 @Configuration
 public class JacksonConfig {
+
     @Bean
-    public Object getObjectMapper(){
+    public ObjectMapper getObjectMapper(){
         ObjectMapper objectMapper = new ObjectMapper();
+        //做一个最简化的jackson配置，修改所有对象的Date类型，转化为想要的时间类型格式
         objectMapper.setDateFormat(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"));
         return objectMapper;
     }
+
 }

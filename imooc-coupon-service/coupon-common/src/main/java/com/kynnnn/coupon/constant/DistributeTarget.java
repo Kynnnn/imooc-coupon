@@ -13,7 +13,9 @@ import java.util.stream.Stream;
 @AllArgsConstructor
 public enum DistributeTarget {
 
+    //单用户分发目标
     SINGLE("单用户", 1),
+    //多用户分发目标
     MULTI("多用户", 2);
 
     /** 分发目标描述 */

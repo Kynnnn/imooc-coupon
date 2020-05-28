@@ -8,7 +8,6 @@ import com.kynnnn.coupon.service.ITemplateBaseService;
 import com.kynnnn.coupon.vo.CouponTemplateSDK;
 import com.kynnnn.coupon.vo.TemplateRequest;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
@@ -42,7 +41,7 @@ public class CouponTemplateController {
     /**
      * 构建优惠券模板
      * 127.0.0.1:7001/coupon-template/build
-     *
+     * 127.0.0.1:9000/imooc/coupon-template/build
      * @param request {@link TemplateRequest}
      * @return
      * @throws CouponException

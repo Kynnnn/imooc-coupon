@@ -1,4 +1,4 @@
-package com.kynnnn.coupon.convert;
+package com.kynnnn.coupon.converter;
 
 import com.alibaba.fastjson.JSON;
 import com.kynnnn.coupon.vo.TemplateRule;

@@ -1,4 +1,4 @@
-package com.kynnnn.coupon.convert;
+package com.kynnnn.coupon.converter;
 
 import com.kynnnn.coupon.constant.CouponCategory;
 
